@@ -225,6 +225,9 @@
 				<tank type="int">4</tank>
 				<!-- quantity is 1 = 25% 2 = 50% 3 = 75% 4 = salvo -->
 				<quantity type="int">4</quantity>
+				<bladder-one type="int">0</bladder-one>
+				<bladder-two type="int">0</bladder-two>
+				<bladder-three type="int">0</bladder-three>
 				<foamconcentrate type="int">0</foamconcentrate>
 				<droprate type="int">300</droprate><!-- for particles only -->
 				<waterdropparticlectrl type="bool">false</waterdropparticlectrl>

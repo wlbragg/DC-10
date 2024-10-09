@@ -19,16 +19,10 @@
     <condition>
 	  <and>
 		  <property>sim/model/firetank/retardantdropparticlectrl</property>
-		  <or>
-			  <equals>
-				<property>sim/model/firetank/tank</property>
-				<value>1</value>
-			  </equals>
-			  <equals>
-				<property>sim/model/firetank/tank</property>
-				<value>4</value>
-			  </equals>
-		  </or>
+		  <equals>
+			<property>sim/model/firetank/bladder-one</property>
+			<value>1</value>
+		  </equals>
 	  </and>
     </condition>
     

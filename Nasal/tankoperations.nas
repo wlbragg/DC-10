@@ -50,6 +50,10 @@ var tank_operations = func {
     var altitude = getprop("position/altitude-agl-ft");
     var normalized = 1 - (altitude - 0) / (60 - 0);
     var quantity = getprop("sim/model/firetank/quantity");
+	var tank = getprop("sim/model/firetank/tank");
+	var bladder_one = getprop("sim/model/firetank/bladder-one");
+	var bladder_two = getprop("sim/model/firetank/bladder-two");
+	var bladder_three = getprop("sim/model/firetank/bladder-three");
 
     var red_diffuse = getprop("/rendering/scene/diffuse/red");
     setprop("/sim/model/DC-10/effects/particles/redcombined", red_diffuse * .95);
@@ -93,7 +97,6 @@ var tank_operations = func {
         if (volume < weight) {
             volume += capacity;
             hopperweight -= capacity;
-
             if (hopperweight < 10) {
                 volume = 0;
                 hopperweight = 0;
@@ -105,12 +108,11 @@ var tank_operations = func {
                 setprop("/fdm/jsbsim/inertia/pointmass-weight-lbs[6]", hopperweight);
             }
         } else {
-			setprop("/fdm/jsbsim/inertia/pointmass-weight-lbs[6]", 0);
             setprop("sim/model/firetank/opentankdoors", 0);
             setprop("sim/model/firetank/retardantdropparticlectrl", 0);
             setprop("sim/model/firetank/waterdropparticlectrl", 0);
+			tankdooropen = 0;
             volume = 0;
-			hopperweight = 0;
         }
     }
 
@@ -124,20 +126,36 @@ var tank_operations = func {
     if (tankdooropen and hopperweight) {
 		if (foam)
 			setprop("sim/model/firetank/waterdropparticlectrl", 1);
-		else
+		else {
 			setprop("sim/model/firetank/retardantdropparticlectrl", 1);
+			if (volume < weight*.33) {
+				setprop("sim/model/firetank/bladder-one", 1);
+				setprop("sim/model/firetank/bladder-two", 0);
+				setprop("sim/model/firetank/bladder-three", 0);
+			}
+			if (volume < weight*.66 and volume >= weight*.33) {
+				setprop("sim/model/firetank/bladder-one", 0);
+				setprop("sim/model/firetank/bladder-two", 1);
+				setprop("sim/model/firetank/bladder-three", 0);
+			}
+			if (volume < weight*1 and volume >= weight*.66) {
+				setprop("sim/model/firetank/bladder-one", 0);
+				setprop("sim/model/firetank/bladder-two", 0);
+				setprop("sim/model/firetank/bladder-three", 1);
+			}
+		}
 		
     } else {
         setprop("sim/model/firetank/retardantdropparticlectrl", 0);
 		setprop("sim/model/firetank/waterdropparticlectrl", 0);
     }
 
-    setprop("sim/model/watercannon/tank-volume", hopperweight / 8.345);
-    setprop("sim/model/watercannon/tank-weight", hopperweight);
+    #setprop("sim/model/watercannon/tank-volume", hopperweight / 8.345);
+    #setprop("sim/model/watercannon/tank-weight", hopperweight);
 
-    if (getprop("sim/model/watercannon/tank-volume") < 80) {
-        setprop("sim/model/watercannon/tank-volume", 80);
-    }
+    #if (getprop("sim/model/watercannon/tank-volume") < 80) {
+    #   setprop("sim/model/watercannon/tank-volume", 80);
+    #}
 }
 
 var digital_display =

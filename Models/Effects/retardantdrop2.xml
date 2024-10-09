@@ -17,18 +17,12 @@
     <lighting>false</lighting>
     
     <condition>
-      <and>
+ 	  <and>
 		  <property>sim/model/firetank/retardantdropparticlectrl</property>
-		  <or>
-			  <equals>
-				<property>sim/model/firetank/tank</property>
-				<value>2</value>
-			  </equals>
-			  <equals>
-				<property>sim/model/firetank/tank</property>
-				<value>4</value>
-			  </equals>
-		  </or>
+		  <equals>
+			<property>sim/model/firetank/bladder-two</property>
+			<value>1</value>
+		  </equals>
 	  </and>
     </condition>
     
