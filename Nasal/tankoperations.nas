@@ -46,7 +46,7 @@ var tank_operations = func {
     var hopperweight = getprop("/fdm/jsbsim/inertia/pointmass-weight-lbs[6]");
     var groundspeed = getprop("velocities/groundspeed-kt");
     var airspeed = getprop("velocities/airspeed-kt");
-    var particles = getprop("sim/model/DC-10/effects/particles/enabled");
+    var particles = getprop("sim/model/firetank/effects/particles/enabled");
     var altitude = getprop("position/altitude-agl-ft");
     var normalized = 1 - (altitude - 0) / (60 - 0);
     var quantity = getprop("sim/model/firetank/quantity");
@@ -56,22 +56,22 @@ var tank_operations = func {
 	var bladder_three = getprop("sim/model/firetank/bladder-three");
 
     var red_diffuse = getprop("/rendering/scene/diffuse/red");
-    setprop("/sim/model/DC-10/effects/particles/redcombined", red_diffuse * .95);
-    setprop("/sim/model/DC-10/effects/particles/greencombined", red_diffuse * .98);
-    setprop("/sim/model/DC-10/effects/particles/bluecombined", red_diffuse * 1);
+    setprop("/sim/model/firetank/effects/particles/redcombined", red_diffuse * .95);
+    setprop("/sim/model/firetank/effects/particles/greencombined", red_diffuse * .98);
+    setprop("/sim/model/firetank/effects/particles/bluecombined", red_diffuse * 1);
 
     if (foam) {
         setprop("sim/model/firetank/waterdropparticlectrl", tankdooropen * hopperweight * particles);
         setprop("sim/model/firetank/retardantdropparticlectrl", 0);
-        setprop("/sim/model/DC-10/effects/particles/redcombined", red_diffuse * .95);
-        setprop("/sim/model/DC-10/effects/particles/greencombined", red_diffuse * .98);
-        setprop("/sim/model/DC-10/effects/particles/bluecombined", red_diffuse * 1);
+        setprop("/sim/model/firetank/effects/particles/redcombined", red_diffuse * .95);
+        setprop("/sim/model/firetank/effects/particles/greencombined", red_diffuse * .98);
+        setprop("/sim/model/firetank/effects/particles/bluecombined", red_diffuse * 1);
     } else {
         setprop("sim/model/firetank/retardantdropparticlectrl", tankdooropen * hopperweight * particles);
         setprop("sim/model/firetank/waterdropparticlectrl", 0);
-        setprop("/sim/model/DC-10/effects/particles/redcombined", red_diffuse * .89);
-        setprop("/sim/model/DC-10/effects/particles/greencombined", red_diffuse * .35);
-        setprop("/sim/model/DC-10/effects/particles/bluecombined", red_diffuse * .13);
+        setprop("/sim/model/firetank/effects/particles/redcombined", red_diffuse * .89);
+        setprop("/sim/model/firetank/effects/particles/greencombined", red_diffuse * .35);
+        setprop("/sim/model/firetank/effects/particles/bluecombined", red_diffuse * .13);
     }
 
     if (tankdooropen and hopperweight) {
@@ -149,13 +149,6 @@ var tank_operations = func {
         setprop("sim/model/firetank/retardantdropparticlectrl", 0);
 		setprop("sim/model/firetank/waterdropparticlectrl", 0);
     }
-
-    #setprop("sim/model/watercannon/tank-volume", hopperweight / 8.345);
-    #setprop("sim/model/watercannon/tank-weight", hopperweight);
-
-    #if (getprop("sim/model/watercannon/tank-volume") < 80) {
-    #   setprop("sim/model/watercannon/tank-volume", 80);
-    #}
 }
 
 var digital_display =

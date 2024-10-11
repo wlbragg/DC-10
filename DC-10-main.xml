@@ -198,22 +198,6 @@
 			</lights>
 			<wingflex type="double">0</wingflex>
 
-			<DC-10>
-				<effects>
-				  <particles>
-					<enabled type="bool">true</enabled>
-					<redcombined type="float">0</redcombined>
-					<greencombined type="float">0</greencombined>
-					<bluecombined type="float">0</bluecombined>
-				  </particles>
-				</effects>  
-			</DC-10>
-
-			<watercannon>
-				<tank-volume type="float">0</tank-volume>
-				<tank-weight type="float">0</tank-weight>
-			</watercannon>
-
 			<firetank>
 				<enabled type="bool">false</enabled>
 				<opentankdoors type="bool">0</opentankdoors>
@@ -233,6 +217,14 @@
 				<waterdropparticlectrl type="bool">false</waterdropparticlectrl>
 				<waterdropretardantctrl type="bool">false</waterdropretardantctrl>
 				<retardantdropparticlectrl type="bool">false</retardantdropparticlectrl>
+				<effects>
+					<particles>
+						<enabled type="bool">true</enabled>
+						<redcombined type="float">0</redcombined>
+						<greencombined type="float">0</greencombined>
+						<bluecombined type="float">0</bluecombined>
+					</particles>
+				</effects>
 			</firetank>
 
 		</model>
