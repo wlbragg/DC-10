@@ -78,13 +78,13 @@
 		<start>
 			<color>
 				<red>
-					<property>sim/model/DC-10/effects/particles/redcombined</property>
+					<property>sim/model/firetank/effects/particles/redcombined</property>
 				</red>
 				<green>
-					<property>sim/model/DC-10/effects/particles/greencombined</property>
+					<property>sim/model/firetank/effects/particles/greencombined</property>
 				</green>
 				<blue>
-					<property>sim/model/DC-10/effects/particles/bluecombined</property>
+					<property>sim/model/firetank/effects/particles/bluecombined</property>
 				</blue>
 				<alpha>
 					<value>.1</value>
@@ -95,13 +95,13 @@
 		<end>
 			<color>
 				<red>
-					<property>sim/model/DC-10/effects/particles/redcombined</property>
+					<property>sim/model/firetank/effects/particles/redcombined</property>
 				</red>
 				<green>
-					<property>sim/model/DC-10/effects/particles/greencombined</property>
+					<property>sim/model/firetank/effects/particles/greencombined</property>
 				</green>
 				<blue>
-					<property>sim/model/DC-10/effects/particles/bluecombined</property>
+					<property>sim/model/firetank/effects/particles/bluecombined</property>
 				</blue>
 				<alpha>
 					<value>.01</value>
