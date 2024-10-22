@@ -127,7 +127,105 @@
 			<z-m>0.76</z-m>
 		</offsets>
 	</model>
-	
+
+	<!-- firetank -->
+	<!-- No Center Gear with Retardant Tank -->
+	<animation>
+        <type>select</type>
+        <object-name>central.strut.up</object-name>
+		<object-name>central.strut.low</object-name>
+		<object-name>central.scissor.up</object-name>
+		<object-name>central.scissor.down</object-name>
+		<object-name>tyres.central</object-name>
+        <condition>
+			<not>
+				<property>sim/model/firetank/enabled</property>
+			</not>
+        </condition>
+    </animation>
+
+	<model>
+		<path>Aircraft/DC-10/Models/firetank.xml</path>
+		<condition>
+			<property>sim/model/firetank/enabled</property>
+		</condition>
+		<offsets>
+		  <x-m> 0.00 </x-m>
+		  <y-m> 0.00 </y-m>
+		  <z-m> 1.10 </z-m>
+		</offsets>
+	</model>
+
+	<!-- Foam or Water drop -->
+	<model>
+		<path>Aircraft/DC-10/Models/Effects/waterdrop3.xml</path>
+		<condition>
+			<property>sim/model/firetank/enabled</property>
+		</condition>
+		<offsets>
+		  <x-m>-3.20 </x-m>
+		  <y-m> 0.00 </y-m>
+		  <z-m>-3.00 </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DC-10/Models/Effects/waterdrop2.xml</path>
+		<condition>
+			<property>sim/model/firetank/enabled</property>
+		</condition>
+		<offsets>
+		  <x-m>-4.20 </x-m>
+		  <y-m> 0.00 </y-m>
+		  <z-m>-3.00 </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DC-10/Models/Effects/waterdrop1.xml</path>
+		<condition>
+			<property>sim/model/firetank/enabled</property>
+		</condition>
+		<offsets>
+		  <x-m>-11.00 </x-m>
+		  <y-m> 0.00 </y-m>
+		  <z-m>-3.00 </z-m>
+		</offsets>
+	</model>
+
+	<!-- Retardant drop -->
+	<model>
+		<path>Aircraft/DC-10/Models/Effects/retardantdrop3.xml</path>
+		<condition>
+			<property>sim/model/firetank/enabled</property>
+		</condition>
+		<offsets>
+		  <x-m> 2.30 </x-m>
+		  <y-m> 0.00 </y-m>
+		  <z-m>-3.00 </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DC-10/Models/Effects/retardantdrop2.xml</path>
+		<condition>
+			<property>sim/model/firetank/enabled</property>
+		</condition>
+		<offsets>
+		  <x-m>-4.20 </x-m>
+		  <y-m> 0.00 </y-m>
+		  <z-m>-3.00 </z-m>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DC-10/Models/Effects/retardantdrop1.xml</path>
+		<condition>
+			<property>sim/model/firetank/enabled</property>
+		</condition>
+		<offsets>
+		  <x-m>-11.00 </x-m>
+		  <y-m>  0.00 </y-m>
+		  <z-m> -3.00 </z-m>
+		</offsets>
+	</model>
+
 	<!-- Wingflex -->	
 	<animation>
 		<type>rotate</type>

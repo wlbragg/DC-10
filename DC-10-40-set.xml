@@ -106,6 +106,13 @@
 			<min-lb type="double">0</min-lb>
 			<max-lb type="double">2000</max-lb>
 		</weight>
+		<weight n="6">
+			<!-- 6764.85 lb each blader -->
+			<name>Retardant Tank</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">100140.00</max-lb>
+		</weight>
 	</payload>
     
 	<systems n="0">

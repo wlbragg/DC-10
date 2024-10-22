@@ -130,6 +130,13 @@
 							<dialog-name>acconfig-fctl</dialog-name>
 						</binding>
 					</item>
+					<item>
+						<label>Fire Tank System</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>firetank</dialog-name>
+						</binding>
+					</item>
 				</menu>
 				<menu n="105">
 					<label>Documentation</label>
@@ -189,6 +196,36 @@
 			</lights>
 			<wingflex type="double">0</wingflex>
 			<wingflex-enable type="bool">0</wingflex-enable>
+
+			<firetank>
+				<enabled type="bool">false</enabled>
+				<opentankdoors type="bool">0</opentankdoors>
+				<foam type="bool">0</foam>
+				<arm type="bool">1</arm>
+				<lowhydpres type="bool">0</lowhydpres>
+				<test type="bool">0</test>
+				<!-- tank is 0 = safe / 1, 2, 3 = tank / 4 = all -->
+				<tank type="int">4</tank>
+				<!-- quantity is 1 = 25% 2 = 50% 3 = 75% 4 = salvo -->
+				<quantity type="int">4</quantity>
+				<bladder-one type="int">0</bladder-one>
+				<bladder-two type="int">0</bladder-two>
+				<bladder-three type="int">0</bladder-three>
+				<foamconcentrate type="int">0</foamconcentrate>
+				<droprate type="int">300</droprate><!-- for particles only -->
+				<waterdropparticlectrl type="bool">false</waterdropparticlectrl>
+				<waterdropretardantctrl type="bool">false</waterdropretardantctrl>
+				<retardantdropparticlectrl type="bool">false</retardantdropparticlectrl>
+				<effects>
+					<particles>
+						<enabled type="bool">true</enabled>
+						<redcombined type="float">0</redcombined>
+						<greencombined type="float">0</greencombined>
+						<bluecombined type="float">0</bluecombined>
+					</particles>
+				</effects>
+			</firetank>
+
 		</model>
 		<multiplay n="0">
 			<generic n="0">
@@ -456,6 +493,12 @@
 				<roll-offset-deg archive="y">0</roll-offset-deg>
 			</config>
 		</view>
+
+		<submodels>
+			<serviceable type="bool">true</serviceable>
+			<path>Aircraft/DC-10/Models/submodels.xml</path>
+		</submodels>
+
     </sim>
 	
 	<consumables n="0">
@@ -1124,6 +1167,30 @@
 					<script>controls.elevatorTrim(-1);</script>
 				</binding>
 			</key>
+			<!--key n="107">
+			  <name>k</name>
+			  <desc>Close Tank Doors</desc>
+			  <binding>
+				<command>property-toggle</command>
+				<property>sim/model/firetank/opencannonvalve</property>
+			  </binding>
+			</key-->
+			<key n="75">
+			  <name>K</name>
+			  <desc>Open Tank Doors</desc>
+			  <binding>
+				<command>nasal</command>
+				<script>
+				  if (getprop("sim/model/firetank/opentankdoors") == 0) {
+					if (getprop("sim/model/firetank/quantity") > 0) {
+					  setprop("sim/model/firetank/opentankdoors", 1);
+					} else {
+					  screen.log.write("Quantity set to safe!");
+					}
+				  }
+				</script>
+			  </binding>
+			</key>
 		</keyboard>
 		<mice n="0">
 			<mouse n="0">
@@ -1625,6 +1692,9 @@
 			<file>Aircraft/DC-10/gui/canvas/common.nas</file>
 			<file>Aircraft/DC-10/gui/canvas/fgcp.nas</file>
 		</panel2d>
+		<DC10>
+			<file>Aircraft/DC-10/Nasal/tankoperations.nas</file>
+		</DC10>
 	</nasal>
 
 </PropertyList>
